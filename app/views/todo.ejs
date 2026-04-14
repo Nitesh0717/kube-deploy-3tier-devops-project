@@ -1,111 +1,112 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Todo List APP test</title>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                background-color: #f4f4f4;
-                color: #333;
-                margin: 0;
-                padding: 0;
-            }
+<html>
 
-            h1 {
-                background-color: #4CAF50;
-                color: white;
-                margin: 0;
-                padding: 20px;
-                text-align: center;
-            }
+<head>
 
-            ul {
-                list-style: none;
-                padding: 0;
-            }
+<title>DevOps Todo App</title>
 
-            ul li {
-                background: #fff;
-                border: 1px solid #ddd;
-                margin-bottom: 10px;
-                padding: 10px;
-                position: relative;
-            }
+<style>
 
-            ul li a {
-                color: #333;
-                text-decoration: none;
-                font-weight: bold;
-            }
+body{
+font-family: Arial;
+background: linear-gradient(135deg,#667eea,#764ba2);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
 
-            ul li a:hover {
-                color: #4CAF50;
-            }
+.container{
+background:white;
+padding:30px;
+border-radius:12px;
+width:400px;
+box-shadow:0 15px 35px rgba(0,0,0,0.2);
+}
 
-            .delete-btn {
-                color: red;
-                position: absolute;
-                right: 10px;
-                top: 10px;
-            }
+h1{
+text-align:center;
+margin-bottom:20px;
+color:#333;
+}
 
-            .edit-btn {
-                color: #FFC107;
-                position: absolute;
-                right: 40px;
-                top: 10px;
-            }
+input{
+width:100%;
+padding:12px;
+margin-bottom:10px;
+border-radius:6px;
+border:1px solid #ddd;
+font-size:16px;
+}
 
-            form {
-                background: #fff;
-                padding: 20px;
-                margin-top: 20px;
-            }
+button{
+width:100%;
+padding:12px;
+background:#667eea;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+font-size:16px;
+}
 
-            label {
-                display: block;
-                margin-bottom: 10px;
-            }
+button:hover{
+background:#5563c1;
+}
 
-            input[type="text"] {
-                width: 100%;
-                padding: 10px;
-                margin-bottom: 10px;
-                border: 1px solid #ddd;
-            }
+.todo{
+background:#f5f5f5;
+padding:10px;
+margin-top:8px;
+border-radius:6px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
 
-            input[type="submit"] {
-                background-color: #4CAF50;
-                color: white;
-                border: none;
-                padding: 10px 20px;
-                cursor: pointer;
-            }
+.delete{
+background:red;
+color:white;
+padding:5px 10px;
+border-radius:5px;
+text-decoration:none;
+font-size:12px;
+}
 
-            input[type="submit"]:hover {
-                background-color: #45a049;
-            }
-        </style>
-    </head>
+</style>
 
-    <body>
-        <h1>Hello Junoon Batch 8 (Jenkins), Write your plan on Learning Jenkins</h1>
-        <ul>
-            <% todolist.forEach(function(todo, index) { %>
-            <li>
-                <a href="/todo/delete/<%= index %>" class="delete-btn">✘</a>
-                <a href="/todo/<%= index %>" class="edit-btn">✎</a>
-                <%- todo %>
-            </li>
-            <% }); %>
-        </ul>
+</head>
 
-        <form action="/todo/add/" method="post">
-            <p>
-                <label for="newtodo">What should I do?</label>
-                <input type="text" name="newtodo" id="newtodo" autofocus />
-                <input type="submit" value="Add" />
-            </p>
-        </form>
-    </body>
+<body>
+
+<div class="container">
+
+<h1>DevOps Todo</h1>
+
+<form action="/add" method="POST">
+
+<input type="text" name="item" placeholder="Enter new task" required>
+
+<button>Add Task</button>
+
+</form>
+
+<br>
+
+<% todoList.forEach(function(todo){ %>
+
+<div class="todo">
+
+<span><%= todo.item %></span>
+
+<a class="delete" href="/delete/<%= todo._id %>">Delete</a>
+
+</div>
+
+<% }) %>
+
+</div>
+
+</body>
+
 </html>

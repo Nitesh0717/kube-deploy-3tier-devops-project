@@ -8,26 +8,26 @@
 <style>
 
 body{
-font-family: Arial;
+font-family: Arial, sans-serif;
 background: linear-gradient(135deg,#667eea,#764ba2);
 height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
+margin:0;
 }
 
 .container{
 background:white;
 padding:30px;
 border-radius:12px;
-width:400px;
+width:420px;
 box-shadow:0 15px 35px rgba(0,0,0,0.2);
 }
 
 h1{
 text-align:center;
 margin-bottom:20px;
-color:#333;
 }
 
 input{
@@ -36,7 +36,6 @@ padding:12px;
 margin-bottom:10px;
 border-radius:6px;
 border:1px solid #ddd;
-font-size:16px;
 }
 
 button{
@@ -47,21 +46,15 @@ color:white;
 border:none;
 border-radius:6px;
 cursor:pointer;
-font-size:16px;
-}
-
-button:hover{
-background:#5563c1;
 }
 
 .todo{
-background:#f5f5f5;
+background:#f1f1f1;
 padding:10px;
 margin-top:8px;
 border-radius:6px;
 display:flex;
 justify-content:space-between;
-align-items:center;
 }
 
 .delete{
@@ -70,7 +63,6 @@ color:white;
 padding:5px 10px;
 border-radius:5px;
 text-decoration:none;
-font-size:12px;
 }
 
 </style>
@@ -83,9 +75,9 @@ font-size:12px;
 
 <h1>DevOps Todo</h1>
 
-<form action="/add" method="POST">
+<form action="/todo/add" method="POST">
 
-<input type="text" name="item" placeholder="Enter new task" required>
+<input type="text" name="newtodo" placeholder="Enter task" required>
 
 <button>Add Task</button>
 
@@ -93,13 +85,13 @@ font-size:12px;
 
 <br>
 
-<% todoList.forEach(function(todo){ %>
+<% todolist.forEach(function(todo, index){ %>
 
 <div class="todo">
 
-<span><%= todo.item %></span>
+<span><%= todo %></span>
 
-<a class="delete" href="/delete/<%= todo._id %>">Delete</a>
+<a class="delete" href="/todo/delete/<%= index %>">Delete</a>
 
 </div>
 

@@ -56,3 +56,9 @@ terraform apply
 - Monitoring integration
 - Logging system
 - Helm charts
+
+## Project Screenshot
+
+### DevOps Todo UI
+
+![DevOps Todo UI](screenshots/ui.png)

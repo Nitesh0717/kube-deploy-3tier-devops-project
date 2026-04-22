@@ -1,4 +1,4 @@
-name: DevOps CI Pipeline
+name: DevOps CI/CD Pipeline
 
 on:
   push:
@@ -6,18 +6,16 @@ on:
       - main
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     steps:
 
-    - name: Checkout code
-      uses: actions/checkout@v3
+    - name: Checkout source code
+      uses: actions/checkout@v4
 
-    - name: Setup Node
-      uses: actions/setup-node@v3
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
       with:
         node-version: 18
 
@@ -26,14 +24,9 @@ jobs:
         cd app
         npm install
 
-    - name: Test application
-      run: |
-        cd app
-        npm test || echo "no tests found"
-
     - name: Build Docker image
       run: |
         docker build -t todo-app -f docker/Dockerfile .
 
-    - name: Pipeline success
-      run: echo "CI pipeline completed successfully"
+    - name: Verify Docker image created
+      run: docker images

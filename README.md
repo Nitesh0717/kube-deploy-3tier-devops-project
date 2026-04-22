@@ -63,3 +63,7 @@ terraform apply
 ### DevOps Todo UI
 
 ![DevOps Todo UI](screenshots/ui.png)
+
+## Architecture Diagram
+
+![Architecture](screenshots/Architecture.png)

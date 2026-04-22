@@ -1,104 +1,38 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-
-<title>DevOps Todo App</title>
-
-<style>
-
-body{
-font-family: Arial, sans-serif;
-background: linear-gradient(135deg,#667eea,#764ba2);
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-margin:0;
-}
-
-.container{
-background:white;
-padding:30px;
-border-radius:12px;
-width:420px;
-box-shadow:0 15px 35px rgba(0,0,0,0.2);
-}
-
-h1{
-text-align:center;
-margin-bottom:20px;
-}
-
-input{
-width:100%;
-padding:12px;
-margin-bottom:10px;
-border-radius:6px;
-border:1px solid #ddd;
-}
-
-button{
-width:100%;
-padding:12px;
-background:#667eea;
-color:white;
-border:none;
-border-radius:6px;
-cursor:pointer;
-}
-
-.todo{
-background:#f1f1f1;
-padding:10px;
-margin-top:8px;
-border-radius:6px;
-display:flex;
-justify-content:space-between;
-}
-
-.delete{
-background:red;
-color:white;
-padding:5px 10px;
-border-radius:5px;
-text-decoration:none;
-}
-
-</style>
-
+    <title>DevOps Todo</title>
+    <style>
+        body { display:flex; font-family:Arial; margin:0; }
+        .sidebar { width:200px; background:#111; color:white; padding:20px; height:100vh; }
+        .main { flex:1; padding:20px; background:#f4f6fb; }
+        .header { background:#667eea; color:white; padding:15px; border-radius:10px; }
+        .task { background:white; margin:10px 0; padding:10px; border-radius:8px; }
+    </style>
 </head>
 
 <body>
 
-<div class="container">
-
-<h1>DevOps Todo</h1>
-
-<form action="/todo/add" method="POST">
-
-<input type="text" name="newtodo" placeholder="Enter task" required>
-
-<button>Add Task</button>
-
-</form>
-
-<br>
-
-<% todolist.forEach(function(todo, index){ %>
-
-<div class="todo">
-
-<span><%= todo %></span>
-
-<a class="delete" href="/todo/delete/<%= index %>">Delete</a>
-
+<div class="sidebar">
+    <h2>DevOps</h2>
 </div>
 
-<% }) %>
+<div class="main">
+
+    <div class="header">
+        <h2>Dashboard</h2>
+    </div>
+
+    <form action="/todo/add" method="POST">
+        <input name="newtodo" placeholder="Add task">
+        <button>Add</button>
+    </form>
+
+    <% todolist.forEach(function(todo){ %>
+        <div class="task"><%= todo %></div>
+    <% }) %>
 
 </div>
 
 </body>
-
 </html>

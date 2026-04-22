@@ -67,3 +67,9 @@ terraform apply
 ## Architecture Diagram
 
 ![Architecture](screenshots/Architecture.png)
+
+## Kubernetes Deployment
+
+Application deployed on Kubernetes (Minikube) using NodePort service.
+
+![Kubernetes UI](screenshots/k8s-ui.png)

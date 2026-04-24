@@ -1,3 +1,8 @@
 export default function App() {
-  return <h1 style={{fontSize: "40px"}}>TEST APP WORKING</h1>;
+  console.log("APP LOADED");
+  return (
+    <div style={{fontSize: "40px", color: "red"}}>
+      THIS IS NEW UI
+    </div>
+  );
 }

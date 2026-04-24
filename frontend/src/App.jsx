@@ -1,3 +1,7 @@
 export default function App() {
-  return <h1 style={{fontSize:"40px"}}>THIS IS MY REAL APP</h1>;
+  return (
+    <div style={{fontSize: "50px", color: "red"}}>
+      REAL APP LOADED 🚀
+    </div>
+  );
 }

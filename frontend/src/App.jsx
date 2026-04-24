@@ -1,121 +1,78 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import React from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
+    <div className="flex h-screen bg-gray-100">
+
+      {/* Sidebar */}
+      <div className="w-64 bg-[#0f172a] text-white p-5 flex flex-col justify-between">
         <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+          <h2 className="text-xl font-bold mb-6">DevOps Todo</h2>
 
-      <div className="ticks"></div>
+          <div className="mb-6">
+            <p className="font-semibold">DevOps Learner</p>
+            <p className="text-sm text-gray-400">devops@example.com</p>
+          </div>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
+          <ul className="space-y-3">
+            <li className="bg-purple-600 p-2 rounded">My Tasks</li>
+            <li className="text-gray-400">Completed</li>
+            <li className="text-gray-400">Analytics</li>
+            <li className="text-gray-400">Settings</li>
           </ul>
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+        <div className="bg-gradient-to-r from-purple-600 to-blue-500 p-4 rounded">
+          <p className="font-semibold">Keep Going 🚀</p>
+          <button className="mt-2 bg-white text-black px-3 py-1 rounded">
+            Stay Motivated
+          </button>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="flex-1 p-6 overflow-auto">
+
+        {/* Header */}
+        <div className="bg-gradient-to-r from-blue-500 to-purple-500 p-6 rounded text-white mb-6">
+          <h1 className="text-2xl font-bold">Good Morning! ☀️</h1>
+          <p>Let's get your tasks done today.</p>
+        </div>
+
+        {/* Stats */}
+        <div className="grid grid-cols-3 gap-4 mb-6">
+          <div className="bg-white p-4 rounded shadow">Total Tasks: 5</div>
+          <div className="bg-white p-4 rounded shadow">Completed: 2</div>
+          <div className="bg-white p-4 rounded shadow">Pending: 3</div>
+        </div>
+
+        {/* Add Task */}
+        <div className="bg-white p-4 rounded shadow mb-6 flex gap-2">
+          <input
+            className="border p-2 flex-1"
+            placeholder="What needs to be done?"
+          />
+          <button className="bg-purple-600 text-white px-4 rounded">
+            Add Task
+          </button>
+        </div>
+
+        {/* Task List */}
+        <div className="space-y-3">
+          <div className="bg-white p-4 rounded shadow flex justify-between">
+            <span>Learn Docker</span>
+            <button className="text-red-500">Delete</button>
+          </div>
+
+          <div className="bg-white p-4 rounded shadow flex justify-between">
+            <span>Deploy to Kubernetes</span>
+            <button className="text-red-500">Delete</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;

@@ -3,16 +3,13 @@ import { useState } from "react";
 export default function App() {
   const [tasks, setTasks] = useState([
     { id: 1, title: "Learn Docker", completed: false },
-    { id: 2, title: "Deploy to Kubernetes", completed: false },
+    { id: 2, title: "Deploy App to Kubernetes", completed: true },
   ]);
   const [input, setInput] = useState("");
 
   const addTask = () => {
     if (!input.trim()) return;
-    setTasks([
-      ...tasks,
-      { id: Date.now(), title: input, completed: false },
-    ]);
+    setTasks([...tasks, { id: Date.now(), title: input, completed: false }]);
     setInput("");
   };
 
@@ -20,119 +17,113 @@ export default function App() {
     setTasks(tasks.filter((t) => t.id !== id));
   };
 
-  const toggleTask = (id) => {
-    setTasks(
-      tasks.map((t) =>
-        t.id === id ? { ...t, completed: !t.completed } : t
-      )
-    );
-  };
-
   const total = tasks.length;
   const completed = tasks.filter((t) => t.completed).length;
   const pending = total - completed;
 
   return (
-    <div style={{ display: "flex", minHeight: "100vh", fontFamily: "sans-serif" }}>
-      
-      {/* Sidebar */}
-      <div style={{ width: "250px", background: "#0f172a", color: "white", padding: "20px" }}>
-        <h2>DevOps Todo</h2>
-        <p style={{ fontSize: "14px", opacity: 0.7 }}>DevOps Learner</p>
+    <div className="flex min-h-screen bg-gray-100">
 
-        <div style={{ marginTop: "20px" }}>
-          <p>My Tasks</p>
-          <p>Completed</p>
-          <p>Analytics</p>
-          <p>Settings</p>
+      {/* Sidebar */}
+      <div className="w-64 bg-[#0f172a] text-white p-6 flex flex-col justify-between">
+        <div>
+          <h1 className="text-xl font-bold mb-6">DevOps Todo</h1>
+
+          <div className="mb-6">
+            <p className="font-medium">DevOps Learner</p>
+            <p className="text-sm text-gray-400">devops@example.com</p>
+          </div>
+
+          <nav className="space-y-2">
+            <button className="w-full text-left px-3 py-2 rounded-lg bg-purple-600">
+              My Tasks
+            </button>
+            <button className="w-full text-left px-3 py-2 rounded-lg hover:bg-gray-700">
+              Completed
+            </button>
+            <button className="w-full text-left px-3 py-2 rounded-lg hover:bg-gray-700">
+              Analytics
+            </button>
+            <button className="w-full text-left px-3 py-2 rounded-lg hover:bg-gray-700">
+              Settings
+            </button>
+          </nav>
+        </div>
+
+        <div className="bg-gradient-to-r from-purple-500 to-blue-500 p-4 rounded-lg">
+          <p className="font-semibold">Keep Going 🚀</p>
+          <button className="mt-2 bg-white text-black px-3 py-1 rounded">
+            Stay Motivated
+          </button>
         </div>
       </div>
 
       {/* Main */}
-      <div style={{ flex: 1, padding: "20px", background: "#f1f5f9" }}>
-        
+      <div className="flex-1 p-6">
+
         {/* Header */}
-        <div style={{
-          background: "linear-gradient(to right, #3b82f6, #9333ea)",
-          color: "white",
-          padding: "20px",
-          borderRadius: "10px",
-          marginBottom: "20px"
-        }}>
-          <h2>Good Morning ☀️</h2>
-          <p>Let's get your tasks done today.</p>
+        <div className="bg-gradient-to-r from-blue-500 to-purple-500 text-white p-6 rounded-xl mb-6">
+          <h2 className="text-2xl font-bold">Good Morning! ☀️</h2>
+          <p className="text-sm">Let's get your tasks done today.</p>
         </div>
 
         {/* Stats */}
-        <div style={{ display: "flex", gap: "10px", marginBottom: "20px" }}>
-          <div style={card}>Total: {total}</div>
-          <div style={card}>Completed: {completed}</div>
-          <div style={card}>Pending: {pending}</div>
+        <div className="grid grid-cols-3 gap-4 mb-6">
+          <div className="bg-white p-4 rounded-xl shadow text-center">
+            <p className="text-xl font-bold">{total}</p>
+            <p className="text-sm text-gray-500">Total Tasks</p>
+          </div>
+          <div className="bg-white p-4 rounded-xl shadow text-center">
+            <p className="text-xl font-bold text-green-500">{completed}</p>
+            <p className="text-sm text-gray-500">Completed</p>
+          </div>
+          <div className="bg-white p-4 rounded-xl shadow text-center">
+            <p className="text-xl font-bold text-orange-500">{pending}</p>
+            <p className="text-sm text-gray-500">Pending</p>
+          </div>
         </div>
 
         {/* Input */}
-        <div style={{ display: "flex", gap: "10px", marginBottom: "20px" }}>
+        <div className="flex gap-3 mb-6">
           <input
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="What needs to be done?"
-            style={{ flex: 1, padding: "10px" }}
+            className="flex-1 p-3 rounded-lg border"
           />
-          <button onClick={addTask} style={btn}>Add Task</button>
+          <button
+            onClick={addTask}
+            className="bg-purple-600 text-white px-4 rounded-lg"
+          >
+            Add Task
+          </button>
         </div>
 
         {/* Tasks */}
-        {tasks.map((task) => (
-          <div key={task.id} style={taskCard}>
-            <span
-              onClick={() => toggleTask(task.id)}
-              style={{
-                cursor: "pointer",
-                textDecoration: task.completed ? "line-through" : "none"
-              }}
+        <div className="space-y-3">
+          {tasks.map((task) => (
+            <div
+              key={task.id}
+              className="bg-white p-4 rounded-xl shadow flex justify-between items-center"
             >
-              {task.title}
-            </span>
-            <button onClick={() => deleteTask(task.id)} style={deleteBtn}>
-              Delete
-            </button>
-          </div>
-        ))}
+              <span
+                className={`${
+                  task.completed ? "line-through text-gray-400" : ""
+                }`}
+              >
+                {task.title}
+              </span>
+              <button
+                onClick={() => deleteTask(task.id)}
+                className="text-red-500"
+              >
+                Delete
+              </button>
+            </div>
+          ))}
+        </div>
+
       </div>
     </div>
   );
 }
-
-const card = {
-  background: "white",
-  padding: "15px",
-  borderRadius: "8px",
-  flex: 1,
-  textAlign: "center",
-  fontWeight: "bold"
-};
-
-const btn = {
-  background: "#9333ea",
-  color: "white",
-  padding: "10px 15px",
-  border: "none",
-  borderRadius: "6px",
-  cursor: "pointer"
-};
-
-const deleteBtn = {
-  background: "transparent",
-  color: "red",
-  border: "none",
-  cursor: "pointer"
-};
-
-const taskCard = {
-  background: "white",
-  padding: "15px",
-  marginBottom: "10px",
-  borderRadius: "8px",
-  display: "flex",
-  justifyContent: "space-between"
-};

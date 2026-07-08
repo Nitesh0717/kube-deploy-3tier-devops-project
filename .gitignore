@@ -1,14 +1,60 @@
+# =========================
+# Node.js
+# =========================
+node_modules/
+**/node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Build
+dist/
+build/
+
+# Coverage
+coverage/
+
+# =========================
 # Terraform
+# =========================
 .terraform/
 **/.terraform/*
 *.tfstate
 *.tfstate.*
+*.tfvars
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraform.lock.hcl
 
-# Node
-node_modules/
-
-# environment files
-.env
-
-# OS
+# =========================
+# OS Files
+# =========================
 .DS_Store
+Thumbs.db
+
+# =========================
+# VS Code
+# =========================
+.vscode/
+
+# =========================
+# IntelliJ
+# =========================
+.idea/
+
+# =========================
+# Misc
+# =========================
+*.zip
+*.tar.gz
+*.log

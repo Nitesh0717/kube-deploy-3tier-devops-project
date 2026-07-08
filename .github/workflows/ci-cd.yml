@@ -1,4 +1,4 @@
-name: DevOps CI/CD Pipeline
+name: KubeDeploy CI/CD
 
 on:
   push:
@@ -6,27 +6,36 @@ on:
       - main
 
 jobs:
+
   build:
+
     runs-on: ubuntu-latest
 
     steps:
 
-    - name: Checkout source code
-      uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: 18
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
-    - name: Install dependencies
-      run: |
-        cd app
-        npm install
+      - name: Install Backend Dependencies
+        working-directory: app
+        run: npm install
 
-    - name: Build Docker image
-      run: |
-        docker build -t todo-app -f docker/Dockerfile .
+      - name: Install Frontend Dependencies
+        working-directory: frontend
+        run: npm install
 
-    - name: Verify Docker image created
-      run: docker images
+      - name: Build Backend Docker Image
+        run: |
+          docker build -t kubedeploy-backend ./app
+
+      - name: Build Frontend Docker Image
+        run: |
+          docker build -t kubedeploy-frontend ./frontend
+
+      - name: Verify Docker Images
+        run: docker images

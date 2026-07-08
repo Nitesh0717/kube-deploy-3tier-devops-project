@@ -1,0 +1,171 @@
+.aws-page{
+    padding:32px;
+    min-height:100vh;
+    background:#0f172a;
+    color:#e2e8f0;
+}
+
+/* ===========================
+   Header
+=========================== */
+
+.aws-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.aws-header h1{
+    font-size:34px;
+    font-weight:700;
+    color:#f8fafc;
+    margin-bottom:8px;
+}
+
+.aws-header p{
+    color:#94a3b8;
+    font-size:15px;
+}
+
+/* ===========================
+   Grid
+=========================== */
+
+.aws-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:24px;
+}
+
+/* ===========================
+   Cards
+=========================== */
+
+.aws-card{
+    background:#1e293b;
+    border:1px solid #334155;
+    border-radius:18px;
+    padding:24px;
+    transition:.3s;
+}
+
+.aws-card:hover{
+    transform:translateY(-5px);
+    border-color:#6366f1;
+}
+
+.aws-card h2{
+    color:#f8fafc;
+    margin-bottom:18px;
+    font-size:24px;
+}
+
+.aws-card h3{
+    color:#e2e8f0;
+    margin-bottom:15px;
+    font-size:18px;
+}
+
+.aws-card p{
+    color:#cbd5e1;
+    line-height:1.7;
+}
+
+.aws-card strong{
+    color:#ffffff;
+}
+
+/* ===========================
+   Architecture
+=========================== */
+
+.architecture-flow{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:18px;
+    margin-top:20px;
+}
+
+.architecture-node{
+    background:#312e81;
+    color:#fff;
+    padding:14px 22px;
+    border-radius:12px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.architecture-node:hover{
+    background:#4338ca;
+}
+
+.arrow{
+    color:#94a3b8;
+    font-size:24px;
+}
+
+/* ===========================
+   Services List
+=========================== */
+
+.aws-services{
+    list-style:none;
+    padding:0;
+    margin-top:10px;
+}
+
+.aws-services li{
+    padding:12px 0;
+    color:#cbd5e1;
+    border-bottom:1px solid #334155;
+}
+
+.aws-services li:last-child{
+    border-bottom:none;
+}
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media (max-width:768px){
+
+    .aws-page{
+        padding:20px;
+    }
+
+    .aws-header{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .aws-header h1{
+        font-size:28px;
+    }
+
+    .architecture-flow{
+        flex-direction:column;
+    }
+
+    .arrow{
+        transform:rotate(90deg);
+    }
+
+}
+
+@media (max-width:480px){
+
+    .aws-page{
+        padding:15px;
+    }
+
+    .aws-header h1{
+        font-size:24px;
+    }
+
+}

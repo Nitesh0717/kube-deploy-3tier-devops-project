@@ -1,0 +1,189 @@
+.monitoring-page{
+    padding:32px;
+    min-height:100vh;
+    background:#0f172a;
+    color:#e2e8f0;
+}
+
+/* ===========================
+   Header
+=========================== */
+
+.monitoring-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.monitoring-header h1{
+    font-size:34px;
+    font-weight:700;
+    color:#f8fafc;
+    margin-bottom:8px;
+}
+
+.monitoring-header p{
+    color:#94a3b8;
+    font-size:15px;
+}
+
+/* ===========================
+   Refresh Button
+=========================== */
+
+.refresh-btn{
+    background:#4f46e5;
+    color:#fff;
+    border:none;
+    padding:12px 24px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:600;
+    transition:.3s;
+}
+
+.refresh-btn:hover{
+    background:#4338ca;
+}
+
+/* ===========================
+   Grid
+=========================== */
+
+.monitor-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:24px;
+}
+
+/* ===========================
+   Cards
+=========================== */
+
+.monitor-card{
+    background:#1e293b;
+    border:1px solid #334155;
+    border-radius:18px;
+    padding:25px;
+    transition:.3s;
+}
+
+.monitor-card:hover{
+    transform:translateY(-5px);
+    border-color:#6366f1;
+}
+
+.monitor-card h3{
+    color:#cbd5e1;
+    font-size:17px;
+    font-weight:600;
+    margin-bottom:15px;
+}
+
+.monitor-card h2{
+    color:#f8fafc;
+    font-size:34px;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+/* ===========================
+   Progress Bar
+=========================== */
+
+.progress{
+    width:100%;
+    height:12px;
+    background:#334155;
+    border-radius:999px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    height:100%;
+    border-radius:999px;
+    transition:width .5s ease;
+}
+
+/* ===========================
+   Colors
+=========================== */
+
+.cpu{
+    background:#3b82f6;
+}
+
+.memory{
+    background:#22c55e;
+}
+
+.disk{
+    background:#f59e0b;
+}
+
+/* ===========================
+   Uptime
+=========================== */
+
+.uptime-box{
+    margin-top:20px;
+    background:#16a34a;
+    color:#fff;
+    text-align:center;
+    padding:12px;
+    border-radius:10px;
+    font-weight:600;
+    font-size:15px;
+}
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media (max-width:768px){
+
+    .monitoring-page{
+        padding:20px;
+    }
+
+    .monitoring-header{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .monitoring-header h1{
+        font-size:28px;
+    }
+
+    .refresh-btn{
+        width:100%;
+    }
+
+    .monitor-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media (max-width:480px){
+
+    .monitoring-page{
+        padding:15px;
+    }
+
+    .monitoring-header h1{
+        font-size:24px;
+    }
+
+    .monitor-card{
+        padding:20px;
+    }
+
+    .monitor-card h2{
+        font-size:28px;
+    }
+
+}

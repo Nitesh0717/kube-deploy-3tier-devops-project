@@ -1,0 +1,324 @@
+.tasks-page{
+    padding:32px;
+    min-height:100vh;
+    background:#0f172a;
+    color:#e2e8f0;
+}
+
+/* ===========================
+   Header
+=========================== */
+
+.tasks-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.tasks-header h1{
+    font-size:34px;
+    font-weight:700;
+    color:#f8fafc;
+}
+
+.tasks-header p{
+    color:#94a3b8;
+}
+
+/* ===========================
+   Controls
+=========================== */
+
+.task-controls{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-bottom:25px;
+}
+
+.task-controls input,
+.task-controls select{
+    flex:1;
+    min-width:220px;
+    background:#1e293b;
+    color:#f8fafc;
+    border:1px solid #334155;
+    border-radius:10px;
+    padding:12px 15px;
+    outline:none;
+    font-size:15px;
+    transition:.3s;
+}
+
+.task-controls input::placeholder{
+    color:#94a3b8;
+}
+
+.task-controls input:focus,
+.task-controls select:focus{
+    border-color:#6366f1;
+}
+
+.task-controls button{
+    background:#4f46e5;
+    color:#fff;
+    border:none;
+    padding:12px 24px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:600;
+    transition:.3s;
+}
+
+.task-controls button:hover{
+    background:#4338ca;
+}
+
+/* ===========================
+   Table
+=========================== */
+
+.table-container{
+    background:#1e293b;
+    border:1px solid #334155;
+    border-radius:18px;
+    overflow:hidden;
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+thead{
+    background:#111827;
+}
+
+thead th{
+    padding:18px;
+    text-align:left;
+    color:#f8fafc;
+    font-size:15px;
+    font-weight:600;
+}
+
+tbody tr{
+    border-bottom:1px solid #334155;
+    transition:.25s;
+}
+
+tbody tr:hover{
+    background:#273449;
+}
+
+tbody td{
+    padding:18px;
+    color:#e2e8f0;
+    vertical-align:middle;
+}
+
+tbody tr:last-child{
+    border-bottom:none;
+}
+
+/* ===========================
+   Status
+=========================== */
+
+.status{
+    display:inline-block;
+    padding:6px 14px;
+    border-radius:20px;
+    color:#fff;
+    font-size:13px;
+    font-weight:600;
+}
+
+.status.completed{
+    background:#16a34a;
+}
+
+.status.pending{
+    background:#f59e0b;
+}
+
+.status.progress{
+    background:#2563eb;
+}
+
+/* ===========================
+   Priority
+=========================== */
+
+.priority{
+    display:inline-block;
+    padding:6px 14px;
+    border-radius:20px;
+    color:#fff;
+    font-size:13px;
+    font-weight:600;
+}
+
+.priority.high{
+    background:#dc2626;
+}
+
+.priority.medium{
+    background:#f59e0b;
+}
+
+.priority.low{
+    background:#16a34a;
+}
+
+/* ===========================
+   Action Buttons
+=========================== */
+
+.action-buttons{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.edit-btn{
+    background:#2563eb;
+    color:#fff;
+    border:none;
+    padding:8px 14px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.edit-btn:hover{
+    background:#1d4ed8;
+}
+
+.delete-btn{
+    background:#dc2626;
+    color:#fff;
+    border:none;
+    padding:8px 14px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.delete-btn:hover{
+    background:#b91c1c;
+}
+
+.save-btn{
+    background:#16a34a;
+    color:#fff;
+    border:none;
+    padding:8px 14px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.save-btn:hover{
+    background:#15803d;
+}
+
+.cancel-btn{
+    background:#64748b;
+    color:#fff;
+    border:none;
+    padding:8px 14px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.cancel-btn:hover{
+    background:#475569;
+}
+
+/* ===========================
+   Edit Fields
+=========================== */
+
+.edit-input,
+.edit-select{
+    width:100%;
+    padding:10px;
+    border-radius:8px;
+    border:1px solid #334155;
+    background:#0f172a;
+    color:#f8fafc;
+    outline:none;
+}
+
+.edit-input:focus,
+.edit-select:focus{
+    border-color:#6366f1;
+}
+
+/* ===========================
+   Empty State
+=========================== */
+
+.no-data{
+    text-align:center;
+    padding:40px;
+    color:#94a3b8;
+    font-size:16px;
+}
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media (max-width:992px){
+
+    .tasks-header{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .task-controls{
+        flex-direction:column;
+    }
+
+    .task-controls input,
+    .task-controls select,
+    .task-controls button{
+        width:100%;
+    }
+
+}
+
+@media (max-width:768px){
+
+    .tasks-page{
+        padding:20px;
+    }
+
+    .tasks-header h1{
+        font-size:28px;
+    }
+
+    table{
+        min-width:800px;
+    }
+
+}
+
+@media (max-width:480px){
+
+    .tasks-page{
+        padding:15px;
+    }
+
+    .tasks-header h1{
+        font-size:24px;
+    }
+
+}

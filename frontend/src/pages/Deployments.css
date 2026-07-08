@@ -1,0 +1,171 @@
+.deployments-page{
+    padding:32px;
+    min-height:100vh;
+    background:#0f172a;
+    color:white;
+}
+
+.deployments-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.deployments-header h1{
+    font-size:34px;
+    margin-bottom:8px;
+    color:white;
+}
+
+.deployments-header p{
+    color:#94a3b8;
+}
+
+.refresh-btn{
+    background:#4f46e5;
+    color:white;
+    border:none;
+    padding:12px 22px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:600;
+    transition:.3s;
+}
+
+.refresh-btn:hover{
+    background:#4338ca;
+}
+
+.deployment-cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    margin-bottom:30px;
+}
+
+.deployment-card{
+    background:#1e293b;
+    border:1px solid #334155;
+    border-radius:16px;
+    padding:24px;
+    transition:.3s;
+}
+
+.deployment-card:hover{
+    transform:translateY(-5px);
+    border-color:#4f46e5;
+}
+
+.deployment-card h3{
+    color:#94a3b8;
+    margin-bottom:12px;
+    font-size:16px;
+}
+
+.deployment-card h2{
+    color:white;
+    font-size:30px;
+}
+
+.healthy{
+    color:#22c55e;
+}
+
+.deployment-table{
+    background:#1e293b;
+    border-radius:18px;
+    padding:25px;
+    margin-bottom:30px;
+}
+
+.deployment-table h2{
+    color:white;
+    margin-bottom:20px;
+}
+
+.deployment-table table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.deployment-table th{
+    text-align:left;
+    padding:14px;
+    color:#94a3b8;
+    border-bottom:1px solid #334155;
+}
+
+.deployment-table td{
+    padding:15px;
+    border-bottom:1px solid #334155;
+    color:white;
+}
+
+.status{
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:14px;
+    font-weight:600;
+}
+
+.running{
+    background:#14532d;
+    color:#4ade80;
+}
+
+.deployment-bottom{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:24px;
+}
+
+.info-card{
+    background:#1e293b;
+    border:1px solid #334155;
+    border-radius:16px;
+    padding:24px;
+}
+
+.info-card h3{
+    margin-bottom:20px;
+    color:white;
+}
+
+.info-card p{
+    margin-bottom:12px;
+    color:#cbd5e1;
+}
+
+.info-card ul{
+    list-style:none;
+    padding:0;
+}
+
+.info-card li{
+    margin-bottom:10px;
+    color:#cbd5e1;
+}
+
+@media(max-width:768px){
+
+.deployments-page{
+    padding:20px;
+}
+
+.deployments-header{
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+.deployments-header h1{
+    font-size:28px;
+}
+
+.deployment-table{
+    overflow-x:auto;
+}
+
+}

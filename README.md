@@ -84,7 +84,7 @@ kube-deploy-3tier-devops-project/
 
 
 🔄 CI/CD Pipeline Workflow
-<img width="1024" height="559" alt="image" src="https://github.com/user-attachments/assets/6bc81011-0202-43fe-94bb-f0c7902e1426" />
+<img src="./screenshots/kube-deploy.png" width="100%" alt="CI/CD Pipeline Workflow" />
 
 
 📡 Core REST API References

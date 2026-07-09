@@ -68,7 +68,7 @@ export default function Monitoring() {
 
           <h2>{metrics.cpu}%</h2>
 
-          <div className="progress">
+          <div className="monitor-progress">
 
             <div
               className="progress-bar cpu"
@@ -85,10 +85,10 @@ export default function Monitoring() {
 
           <h2>{metrics.memory}%</h2>
 
-          <div className="progress">
+          <div className="monitor-progress">
 
             <div
-              className="progress-bar memory"
+              className="monitor-progress-bar memory"
               style={{ width: `${metrics.memory}%` }}
             />
 

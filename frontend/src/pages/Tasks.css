@@ -85,7 +85,6 @@
     background:#1e293b;
     border:1px solid #334155;
     border-radius:18px;
-    overflow:hidden;
     overflow-x:auto;
 }
 
@@ -126,28 +125,45 @@ tbody tr:last-child{
 }
 
 /* ===========================
-   Status
+   Task Status
 =========================== */
 
-.status{
-    display:inline-block;
-    padding:6px 14px;
-    border-radius:20px;
-    color:#fff;
+.task-status{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    width:125px;
+    height:36px;
+
+    border-radius:999px;
+
     font-size:13px;
     font-weight:600;
+
+    color:#fff;
+
+    cursor:pointer;
+
+    white-space:nowrap;
+
+    transition:.25s;
 }
 
-.status.completed{
-    background:#16a34a;
+.task-status:hover{
+    transform:translateY(-2px);
 }
 
-.status.pending{
+.task-status.pending{
     background:#f59e0b;
 }
 
-.status.progress{
-    background:#2563eb;
+.task-status.in-progress{
+    background:#3b82f6;
+}
+
+.task-status.completed{
+    background:#16a34a;
 }
 
 /* ===========================
@@ -155,10 +171,17 @@ tbody tr:last-child{
 =========================== */
 
 .priority{
-    display:inline-block;
-    padding:6px 14px;
-    border-radius:20px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    width:90px;
+    height:34px;
+
+    border-radius:999px;
+
     color:#fff;
+
     font-size:13px;
     font-weight:600;
 }
@@ -176,23 +199,29 @@ tbody tr:last-child{
 }
 
 /* ===========================
-   Action Buttons
+   Buttons
 =========================== */
 
 .action-buttons{
     display:flex;
     gap:10px;
-    flex-wrap:wrap;
+}
+
+.edit-btn,
+.delete-btn,
+.save-btn,
+.cancel-btn{
+    border:none;
+    border-radius:8px;
+    padding:8px 14px;
+    cursor:pointer;
+    color:#fff;
+    font-weight:600;
+    transition:.25s;
 }
 
 .edit-btn{
     background:#2563eb;
-    color:#fff;
-    border:none;
-    padding:8px 14px;
-    border-radius:8px;
-    cursor:pointer;
-    transition:.3s;
 }
 
 .edit-btn:hover{
@@ -201,12 +230,6 @@ tbody tr:last-child{
 
 .delete-btn{
     background:#dc2626;
-    color:#fff;
-    border:none;
-    padding:8px 14px;
-    border-radius:8px;
-    cursor:pointer;
-    transition:.3s;
 }
 
 .delete-btn:hover{
@@ -215,12 +238,6 @@ tbody tr:last-child{
 
 .save-btn{
     background:#16a34a;
-    color:#fff;
-    border:none;
-    padding:8px 14px;
-    border-radius:8px;
-    cursor:pointer;
-    transition:.3s;
 }
 
 .save-btn:hover{
@@ -229,12 +246,6 @@ tbody tr:last-child{
 
 .cancel-btn{
     background:#64748b;
-    color:#fff;
-    border:none;
-    padding:8px 14px;
-    border-radius:8px;
-    cursor:pointer;
-    transition:.3s;
 }
 
 .cancel-btn:hover{
@@ -242,17 +253,17 @@ tbody tr:last-child{
 }
 
 /* ===========================
-   Edit Fields
+   Edit Inputs
 =========================== */
 
 .edit-input,
 .edit-select{
     width:100%;
-    padding:10px;
+    padding:10px 12px;
     border-radius:8px;
     border:1px solid #334155;
-    background:#0f172a;
-    color:#f8fafc;
+    background:#111827;
+    color:#fff;
     outline:none;
 }
 
@@ -306,7 +317,7 @@ tbody tr:last-child{
     }
 
     table{
-        min-width:800px;
+        min-width:850px;
     }
 
 }

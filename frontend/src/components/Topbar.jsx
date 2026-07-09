@@ -1,29 +1,19 @@
-export default function Topbar(){
+import "./Topbar.css";
 
-return(
+export default function Topbar() {
+  return (
+    <header className="topbar">
+      <div>
+        <h1>KubeDeploy Dashboard</h1>
+        <p>Cloud Native DevOps Monitoring Platform</p>
+      </div>
 
-<div style={{
-display:"flex",
-justifyContent:"space-between",
-alignItems:"center",
-marginBottom:"40px"
-}}>
-
-<h2>KubeDeploy Dashboard</h2>
-
-<button style={{
-background:"#4f46e5",
-border:"none",
-padding:"12px 24px",
-borderRadius:"10px",
-color:"white",
-cursor:"pointer"
-}}>
-Refresh
-</button>
-
-</div>
-
-)
-
+      <button
+        className="refresh-btn"
+        onClick={() => window.location.reload()}
+      >
+        Refresh
+      </button>
+    </header>
+  );
 }

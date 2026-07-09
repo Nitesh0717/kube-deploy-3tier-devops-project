@@ -14,15 +14,18 @@ services:
       context: ./app
     container_name: kubedeploy-backend
     restart: unless-stopped
-    ports:
-      - "8000:8000"
+
+    network_mode: host
+
     environment:
-      MONGO_URI: mongodb://kubedeploy-mongodb:27017/kubedeploy
+      MONGO_URI: mongodb://127.0.0.1:27017/kubedeploy
       KUBECONFIG: /root/.kube/config
+
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /home/nitesh17/.kube:/root/.kube:ro
       - /home/nitesh17/.minikube:/home/nitesh17/.minikube:ro
+
     depends_on:
       - mongodb
 

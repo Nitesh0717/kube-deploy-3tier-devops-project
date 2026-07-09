@@ -8,8 +8,12 @@ export default function Tasks() {
   const [title, setTitle] = useState("");
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("All");
+
   const [editingId, setEditingId] = useState(null);
+
   const [editTitle, setEditTitle] = useState("");
+  const [editStatus, setEditStatus] = useState("Pending");
+  const [editPriority, setEditPriority] = useState("Medium");
 
   async function loadTasks() {
     try {
@@ -28,13 +32,21 @@ export default function Tasks() {
 
     if (!title.trim()) return;
 
-    await API.post("/api/tasks", {
-      title,
-    });
+    try {
 
-    setTitle("");
+      await API.post("/api/tasks", {
+        title,
+      });
 
-    loadTasks();
+      setTitle("");
+
+      loadTasks();
+
+    } catch (err) {
+
+      console.log(err);
+
+    }
 
   }
 
@@ -42,31 +54,58 @@ export default function Tasks() {
 
     if (!window.confirm("Delete this task?")) return;
 
-    await API.delete(`/api/tasks/${id}`);
+    try {
 
-    loadTasks();
+      await API.delete(`/api/tasks/${id}`);
+
+      loadTasks();
+
+    } catch (err) {
+
+      console.log(err);
+
+    }
 
   }
 
   function startEdit(task) {
 
-    setEditingId(task.id);
+    setEditingId(task._id);
 
     setEditTitle(task.title);
+
+    setEditStatus(task.status);
+
+    setEditPriority(task.priority);
 
   }
 
   async function saveEdit(task) {
+
     if (!editTitle.trim()) return;
 
-await API.put(`/api/tasks/${task.id}`, {
-    title: editTitle,
-      status: task.status,
-      priority: task.priority,
-    });
+    try {
 
-    setEditingId(null);
-    await loadTasks();
+      await API.put(`/api/tasks/${task._id}`, {
+
+        title: editTitle,
+
+        status: editStatus,
+
+        priority: editPriority,
+
+      });
+
+      setEditingId(null);
+
+      loadTasks();
+
+    } catch (err) {
+
+      console.log(err);
+
+    }
+
   }
 
   async function updateStatus(task) {
@@ -79,19 +118,34 @@ await API.put(`/api/tasks/${task.id}`, {
     else if (task.status === "In Progress")
       next = "Completed";
 
-    await API.put(`/api/tasks/${task.id}`, {
-      title: task.title,
-      status: next,
-      priority: task.priority,
-    });
+    else
+      next = "Pending";
 
-    loadTasks();
+    try {
+
+      await API.put(`/api/tasks/${task._id}`, {
+
+        title: task.title,
+
+        status: next,
+
+        priority: task.priority,
+
+      });
+
+      loadTasks();
+
+    } catch (err) {
+
+      console.log(err);
+
+    }
 
   }
 
   const filteredTasks = useMemo(() => {
 
-    return tasks.filter(task => {
+    return tasks.filter((task) => {
 
       const matchSearch =
         task.title.toLowerCase().includes(search.toLowerCase());
@@ -130,12 +184,12 @@ await API.put(`/api/tasks/${task.id}`, {
         <input
           placeholder="Search..."
           value={search}
-          onChange={(e)=>setSearch(e.target.value)}
+          onChange={(e) => setSearch(e.target.value)}
         />
 
         <select
           value={filter}
-          onChange={(e)=>setFilter(e.target.value)}
+          onChange={(e) => setFilter(e.target.value)}
         >
 
           <option>All</option>
@@ -169,16 +223,16 @@ await API.put(`/api/tasks/${task.id}`, {
 
           </thead>
 
-          <tbody>            
+          <tbody>
+
             {filteredTasks.length === 0 ? (
 
               <tr>
 
-                <td
-                  colSpan="5"
-                  className="no-data"
-                >
+                <td colSpan="5" className="no-data">
+
                   No tasks found
+
                 </td>
 
               </tr>
@@ -187,18 +241,18 @@ await API.put(`/api/tasks/${task.id}`, {
 
               filteredTasks.map((task, index) => (
 
-                <tr key={task.id || index}>
+                <tr key={task._id}>
 
                   <td>{index + 1}</td>
 
                   <td>
 
-                    {editingId === task.id ? (
+                    {editingId === task._id ? (
 
                       <input
                         className="edit-input"
                         value={editTitle}
-                        onChange={(e)=>setEditTitle(e.target.value)}
+                        onChange={(e) => setEditTitle(e.target.value)}
                       />
 
                     ) : (
@@ -211,39 +265,77 @@ await API.put(`/api/tasks/${task.id}`, {
 
                   <td>
 
-                    <span
-                      className={
-                        task.status === "Completed"
-                          ? "status completed"
-                          : task.status === "In Progress"
-                          ? "status progress"
-                          : "status pending"
-                      }
-                      onClick={() => updateStatus(task)}
-                      style={{cursor:"pointer"}}
-                    >
+                    {editingId === task._id ? (
 
-                      {task.status}
+                      <select
+                        className="edit-select"
+                        value={editStatus}
+                        onChange={(e) =>
+                          setEditStatus(e.target.value)
+                        }
+                      >
 
-                    </span>
+                        <option>Pending</option>
+                        <option>In Progress</option>
+                        <option>Completed</option>
+
+                      </select>
+
+                    ) : (
+
+
+                   <span
+  className={
+    task.status === "Completed"
+      ? "task-status completed"
+      : task.status === "In Progress"
+      ? "task-status in-progress"
+      : "task-status pending"
+  }
+  onClick={() => updateStatus(task)}
+>
+  {task.status}
+</span>
+
+                    )}
 
                   </td>
 
                   <td>
 
-                    <span
-                      className={
-                        task.priority === "High"
-                          ? "priority high"
-                          : task.priority === "Medium"
-                          ? "priority medium"
-                          : "priority low"
-                      }
-                    >
+                    {editingId === task._id ? (
 
-                      {task.priority}
+                      <select
+                        className="edit-select"
+                        value={editPriority}
+                        onChange={(e) =>
+                          setEditPriority(e.target.value)
+                        }
+                      >
 
-                    </span>
+                        <option>High</option>
+                        <option>Medium</option>
+                        <option>Low</option>
+
+                      </select>
+
+                    ) : (
+
+                      <span
+                        className={
+                          task.priority === "High"
+                            ? "priority high"
+                            : task.priority === "Medium"
+                            ? "priority medium"
+                            : "priority low"
+                        }
+                      >
+
+                        {task.priority}
+
+                      </span>
+
+                    )}
 
                   </td>
 
@@ -251,7 +343,7 @@ await API.put(`/api/tasks/${task.id}`, {
 
                     <div className="action-buttons">
 
-                      {editingId === task.id ? (
+                      {editingId === task._id ? (
 
                         <>
 
@@ -284,7 +376,7 @@ await API.put(`/api/tasks/${task.id}`, {
 
                           <button
                             className="delete-btn"
-                            onClick={() => deleteTask(task.id)}
+                            onClick={() => deleteTask(task._id)}
                           >
                             Delete
                           </button>

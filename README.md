@@ -82,11 +82,6 @@ kube-deploy-3tier-devops-project/
 └── README.md               # Documentation guide
 
 
-
-🔄 CI/CD Pipeline Workflow
-<img src="./screenshots/kube-deploy.png" width="100%" alt="CI/CD Pipeline Workflow" />
-
-
 📡 Core REST API References
 
 📋 Task Management Endpoints

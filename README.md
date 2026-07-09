@@ -81,8 +81,10 @@ kube-deploy-3tier-devops-project/
 ├── docker-compose.yml      # Multi-container orchestration definition file
 └── README.md               # Documentation guide
 
+
+
 🔄 CI/CD Pipeline Workflow
-<img width="2816" height="1536" alt="kube-deploy" src="https://github.com/user-attachments/assets/ee1de678-ffc0-4efa-aea2-3cc5f741b116" />
+<img width="1024" height="559" alt="image" src="https://github.com/user-attachments/assets/6bc81011-0202-43fe-94bb-f0c7902e1426" />
 
 
 📡 Core REST API References
